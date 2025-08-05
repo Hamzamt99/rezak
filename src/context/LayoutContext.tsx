@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState } from 'react';
 import { initialLayoutData } from '@/data/layout-data';
-import { Item, LayoutState, Section, PageConfig } from '@/types/builder';
+import { LayoutState, Section, PageConfig } from '@/types/builder';
 
 interface LayoutContextType {
   layout: LayoutState;
@@ -14,7 +14,7 @@ interface LayoutContextType {
   setLayout: (layout: LayoutState) => void;
   setPreviewLayout: (layout: Section[] | ((prev: Section[]) => Section[])) => void;
   setActiveId: (id: number | null) => void;
-  setDraggingItem: (item: Item | null) => void;
+  setDraggingItem: (item: any | null) => void;
   setEditingSection: (section: Section | null) => void;
   setIsEditorOpen: (isOpen: boolean) => void;
   handleExport: () => void;
@@ -28,9 +28,9 @@ const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export function LayoutProvider({ children }: { children: React.ReactNode }) {
   const [layout, setLayout] = useState<LayoutState>(initialLayoutData);
-  const [previewLayout, setPreviewLayout] = useState<Item[]>([]);
+  const [previewLayout, setPreviewLayout] = useState<any[]>([]);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [draggingItem, setDraggingItem] = useState<Item | null>(null);
+  const [draggingItem, setDraggingItem] = useState<any | null>(null);
   const [editingSection, setEditingSection] = useState<Section | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
